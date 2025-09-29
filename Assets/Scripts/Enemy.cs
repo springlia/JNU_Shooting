@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed = 5;
     Vector3 dir;
+    [SerializeField] GameObject boomEffect;
 
     private void Start()
     {
@@ -27,11 +28,13 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        //if (collision.gameObject.CompareTag("Bullet"))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            
+            Instantiate(boomEffect, this.transform.position, Quaternion.identity);            
         }
     }
+
+
 }

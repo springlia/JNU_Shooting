@@ -30,6 +30,10 @@ public class Enemy : MonoBehaviour
     {
         //if (collision.gameObject.CompareTag("Bullet"))
         {
+
+            GameObject smObject = GameObject.Find("ScoreManager");
+            ScoreManager sm = smObject.GetComponent<ScoreManager>();
+            sm.SetScore(sm.GetScore() + 1);
             Destroy(collision.gameObject);
             Destroy(gameObject);
             Instantiate(boomEffect, this.transform.position, Quaternion.identity);            
